@@ -3,7 +3,8 @@ import 'dart:typed_data';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter_pos_printer_platform/discovery.dart';
 import 'package:flutter_pos_printer_platform/printer.dart';
-import 'package:flutter_star_prnt/flutter_star_prnt.dart';
+
+import '../../flutter_star_prnt/flutter_star_prnt.dart';
 
 enum StarEmulation { StarPRNT, StarLine, StarGraphic }
 
@@ -17,10 +18,10 @@ class StarPrinter extends Printer {
   late final int _width;
   late final String? _selectedPrinter;
 
-  static DiscoverResult<PortInfo> discoverStarPrinter() async {
+  static Future<DiscoverResult<PortInfo>> discoverStarPrinter() async {
     return (await StarPrnt.portDiscovery(StarPortType.All))
         .map((e) => PrinterDiscovered(
-              name: e.modelName ?? 'Star Printer',
+              name: e?.modelName ?? 'Star Printer',
               detail: e,
             ))
         .toList();

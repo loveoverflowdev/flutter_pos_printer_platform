@@ -89,7 +89,7 @@ class UsbPrinterConnector implements PrinterConnector<UsbPrinterInput> {
     }
   }
 
-  static DiscoverResult<UsbPrinterInfo> discoverPrinters() async {
+  static Future<DiscoverResult<UsbPrinterInfo>> discoverPrinters() async {
     if (Platform.isAndroid) {
       final List<dynamic> results = await flutterPrinterChannel.invokeMethod('getList');
       return results

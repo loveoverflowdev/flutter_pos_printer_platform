@@ -96,7 +96,7 @@ class BluetoothPrinterConnector implements PrinterConnector<BluetoothPrinterInpu
   setName(String name) => this.name = name;
   setIsBle(bool isBle) => this.isBle = isBle;
 
-  static DiscoverResult<BluetoothPrinterDevice> discoverPrinters({bool isBle = false}) async {
+  static Future<DiscoverResult<BluetoothPrinterDevice>> discoverPrinters({bool isBle = false}) async {
     if (Platform.isAndroid) {
       final List<dynamic> results =
           isBle ? await flutterPrinterChannel.invokeMethod('getBluetoothLeList') : await flutterPrinterChannel.invokeMethod('getBluetoothList');
