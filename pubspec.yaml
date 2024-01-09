@@ -11,7 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_star_prnt: ^2.4.1
+  flutter_star_prnt:
+    git:
+      url: https://github.com/sumonwd/flutter_star_prnt.git
+  
   enum_to_string: ^2.0.1
   image: ^3.0.8
 
